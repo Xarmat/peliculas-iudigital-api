@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const conectarDB = require('./config/db');
-const crudRouter = require('./utils/crudRouter');
+const crudRouter = require('./routes/crud.routes');
 
 const Genero = require('./models/Genero');
 const Director = require('./models/Director');

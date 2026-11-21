@@ -48,3 +48,26 @@ th { background: #eceef4; }
 .tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
 .tarjeta { background: #fff; padding: 1.5rem; border-radius: 8px; text-align: center; text-decoration: none; color: #1f2430; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
 .tarjeta:hover { background: #4f6df5; color: #fff; }
+
+/* ===== Tema oscuro (se agrega al final para sobrescribir los colores claros) ===== */
+:root { color-scheme: dark; } /* hace oscuros también los controles nativos (scroll, listas desplegables) */
+body { background: #14161c; color: #e6e8ee; }
+.navbar { background: #0d0f14; border-bottom: 1px solid #262a36; }
+
+/* Paneles: formulario, tabla y tarjetas */
+.formulario, .tabla-scroll, .tarjeta { background: #1c2029; border: 1px solid #262a36; box-shadow: none; }
+.tarjeta { color: #e6e8ee; }
+
+/* Campos del formulario */
+.formulario input, .formulario textarea, .formulario select { background: #14161c; color: #e6e8ee; border-color: #343949; }
+.formulario input:focus, .formulario textarea:focus, .formulario select:focus { outline: 2px solid #4f6df5; border-color: transparent; }
+
+/* Tabla */
+th { background: #232834; }
+th, td { border-bottom-color: #262a36; }
+
+/* Botón secundario y mensajes */
+button.secundario { background: #2c3242; color: #e6e8ee; }
+button.secundario:hover { background: #38405a; }
+.estado.activo, .aviso { background: #16402a; color: #7fe0a4; }
+.estado.inactivo, .error { background: #4a2020; color: #f0a0a0; }

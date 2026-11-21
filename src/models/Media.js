@@ -2,7 +2,14 @@ const { Schema, model } = require('mongoose');
 const opciones = require('./opciones');
 
 const MediaSchema = new Schema({
-  serial: { type: String, required: [true, 'El serial es obligatorio'], unique: true, trim: true },
+    serial: {
+    type: String,
+    required: [true, 'El serial es obligatorio'],
+    unique: true,
+    trim: true,
+    // Letras, números y guiones (por ejemplo MED-0001). Evita seriales con caracteres raros.
+    match: [/^[A-Za-z0-9-]{3,30}$/, 'El serial solo puede tener letras, números y guiones (de 3 a 30 caracteres)'],
+  },
   titulo: { type: String, required: [true, 'El título es obligatorio'], trim: true },
   sinopsis: { type: String, trim: true },
   url: { type: String, required: [true, 'La URL es obligatoria'], unique: true, trim: true },

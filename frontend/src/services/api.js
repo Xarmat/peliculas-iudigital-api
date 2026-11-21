@@ -30,6 +30,8 @@ export const api = {
   crear: (recurso, cuerpo) => peticion(`/${recurso}`, { method: 'POST', body: JSON.stringify(cuerpo) }),
   editar: (recurso, id, cuerpo) => peticion(`/${recurso}/${id}`, { method: 'PUT', body: JSON.stringify(cuerpo) }),
   eliminar: (recurso, id) => peticion(`/${recurso}/${id}`, { method: 'DELETE' }),
+  // Pide a la API el siguiente serial libre de Media (formato MED-0001)
+  siguienteSerial: () => peticion('/medias/siguiente-serial'),
 };
 
 // Convierte cualquier error en { mensaje, detalle } listo para mostrar en pantalla.

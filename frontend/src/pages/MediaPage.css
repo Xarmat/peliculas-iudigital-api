@@ -1,0 +1,33 @@
+/* Estilos exclusivos de la pantalla Media (tema oscuro) */
+
+/* Filtros */
+.filtros { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.filtros label { display: grid; gap: .3rem; font-size: .85rem; font-weight: 600; }
+.filtros select { padding: .45rem; background: #14161c; color: #e6e8ee; border: 1px solid #343949; border-radius: 6px; font: inherit; font-weight: 400; }
+
+/* Filas de campos del formulario (se acomodan en columnas si hay espacio) */
+.formulario .fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; }
+.ayuda { font-weight: 400; color: #e0b45a; font-size: .8rem; }
+
+/* Cuadrícula de tarjetas */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.media-card { background: #1c2029; border: 1px solid #262a36; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+
+/* Portada: proporción 2:3; el texto queda detrás de la imagen y se ve solo si no carga */
+.portada { position: relative; aspect-ratio: 2 / 3; background: #232834; display: grid; place-items: center; color: #7c849a; font-size: .9rem; }
+.portada img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.media-info { padding: .9rem; display: grid; gap: .5rem; align-content: start; flex: 1; }
+.media-info h3 { margin: 0; font-size: 1.05rem; }
+.media-info h3 small { color: #9aa1b5; font-weight: 400; }
+.etiqueta { justify-self: start; background: #2c3242; padding: .15rem .6rem; border-radius: 99px; font-size: .78rem; }
+.sinopsis { margin: 0; font-size: .88rem; color: #b9bfcf; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.datos { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .2rem .6rem; font-size: .85rem; }
+.datos dt { color: #8c93a8; }
+.datos dd { margin: 0; }
+
+/* Botones de la tarjeta */
+.acciones { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0 .9rem .9rem; }
+.boton-enlace { background: #2c3242; color: #e6e8ee; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; font-size: .95rem; }
+.boton-enlace:hover { background: #38405a; }
+.nota { font-weight: 400; color: #8c93a8; font-size: .8rem; }

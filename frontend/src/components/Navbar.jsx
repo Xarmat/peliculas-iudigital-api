@@ -11,7 +11,7 @@ export default function Navbar() {
         {Object.entries(MODULOS).map(([ruta, m]) => (
           <NavLink key={ruta} to={`/${ruta}`}>{m.titulo}</NavLink>
         ))}
-        {/* PARTE 2: aquí se agregará el enlace a Media */}
+        <NavLink to="/medias">Media</NavLink>
       </nav>
     </header>
   );

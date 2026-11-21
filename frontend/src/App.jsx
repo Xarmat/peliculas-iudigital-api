@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Inicio from './pages/Inicio.jsx';
 import CatalogoPage from './components/CatalogoPage.jsx';
+import MediaPage from './pages/MediaPage.jsx';
 import { MODULOS } from './config/modulos.js';
 
 export default function App() {
@@ -19,7 +20,8 @@ export default function App() {
             <Route key={ruta} path={`/${ruta}`} element={<CatalogoPage key={ruta} modulo={modulo} />} />
           ))}
 
-          {/* PARTE 2: aquí se agregará la ruta de Media */}
+          {/* Media tiene su propia pantalla */}
+          <Route path="/medias" element={<MediaPage />} />
 
           <Route path="*" element={<p>Página no encontrada.</p>} />
         </Routes>

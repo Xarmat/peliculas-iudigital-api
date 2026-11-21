@@ -11,7 +11,7 @@ export default function Inicio() {
         {Object.entries(MODULOS).map(([ruta, m]) => (
           <Link key={ruta} to={`/${ruta}`} className="tarjeta">{m.titulo}</Link>
         ))}
-        {/* PARTE 2: aquí se agregará la tarjeta de Media */}
+        <Link to="/medias" className="tarjeta">Media (películas y series)</Link>
       </div>
     </section>
   );
