@@ -1,5 +1,7 @@
 # Plataforma de Películas y Series (API REST + Frontend)
 
+**Estudiante:** Pablo Martínez Ortiz
+
 Proyecto de la asignatura Proyecto Integrado II (Ingeniería de Software y Datos, IU Digital de Antioquia). Incluye las dos evidencias de aprendizaje en un mismo proyecto:
 
 - **EA1: API REST - NodeJs** (backend y base de datos).
