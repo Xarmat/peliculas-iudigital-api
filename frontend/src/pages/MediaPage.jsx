@@ -1,7 +1,7 @@
 // Pantalla del módulo Media (películas y series): lista en tarjetas con filtros,
 // formulario para crear/editar y eliminación con confirmación.
 // El formulario solo ofrece géneros, directores y productoras ACTIVOS (regla del caso).
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { api, describirError } from '../services/api.js';
 import './MediaPage.css';
 
@@ -33,8 +33,15 @@ export default function MediaPage() {
   const [editando, setEditando] = useState(null); // la producción que se edita (null = creando)
   const [mostrarForm, setMostrarForm] = useState(false);
   const [guardando, setGuardando] = useState(false);
+  const errorRef = useRef(null);
 
   // ---------- Carga de datos (GET) ----------
+
+  useEffect(() => {
+    if (error?.mensaje === 'Valor duplicado') {
+      errorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [error]);
 
   // Los 4 catálogos se piden una sola vez, al abrir la pantalla
   useEffect(() => {
@@ -165,7 +172,11 @@ export default function MediaPage() {
 
       {aviso && <div className="aviso">{aviso}</div>}
       {error && (
-        <div className="error">
+        <div
+          className={error.mensaje === 'Valor duplicado' ? 'error error-duplicado' : 'error'}
+          ref={errorRef}
+          role={error.mensaje === 'Valor duplicado' ? 'alert' : undefined}
+        >
           <strong>{error.mensaje}</strong>
           {error.detalle.length > 0 && <ul>{error.detalle.map((d, i) => <li key={i}>{d}</li>)}</ul>}
         </div>

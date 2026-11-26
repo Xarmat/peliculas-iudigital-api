@@ -2,7 +2,7 @@
 // Recibe el "modulo" (ver config/modulos.js) y muestra la lista, el formulario
 // para crear/editar y los mensajes de éxito o error. Los catálogos no se eliminan:
 // el caso de estudio solo pide registrar y editar (se desactivan con el estado).
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { api, describirError } from '../services/api.js';
 
 // Formulario en blanco: un valor vacío por cada campo del módulo (y estado Activo si aplica)
@@ -26,6 +26,7 @@ export default function CatalogoPage({ modulo }) {
   const [editandoId, setEditandoId] = useState(null); // null = creando, id = editando
   const [mostrarForm, setMostrarForm] = useState(false);
   const [guardando, setGuardando] = useState(false);
+  const errorRef = useRef(null);
 
   // ---------- Consultar (GET) ----------
   const cargar = async () => {
@@ -42,6 +43,12 @@ export default function CatalogoPage({ modulo }) {
 
   // Al abrir la pantalla (o cambiar de módulo) se carga la lista
   useEffect(() => { cargar(); }, [modulo.endpoint]);
+
+  useEffect(() => {
+    if (error?.mensaje === 'Valor duplicado') {
+      errorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [error]);
 
   // ---------- Manejo del formulario ----------
   const cambiar = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -70,6 +77,7 @@ export default function CatalogoPage({ modulo }) {
     setMostrarForm(false);
     setEditandoId(null);
     setForm(formularioVacio(modulo));
+    setError(null);
   };
 
   // ---------- Crear (POST) o editar (PUT) ----------
@@ -104,7 +112,11 @@ export default function CatalogoPage({ modulo }) {
 
       {aviso && <div className="aviso">{aviso}</div>}
       {error && (
-        <div className="error">
+        <div
+          className={error.mensaje === 'Valor duplicado' ? 'error error-duplicado' : 'error'}
+          ref={errorRef}
+          role={error.mensaje === 'Valor duplicado' ? 'alert' : undefined}
+        >
           <strong>{error.mensaje}</strong>
           {error.detalle.length > 0 && <ul>{error.detalle.map((d, i) => <li key={i}>{d}</li>)}</ul>}
         </div>

@@ -71,3 +71,4 @@ button.secundario { background: #2c3242; color: #e6e8ee; }
 button.secundario:hover { background: #38405a; }
 .estado.activo, .aviso { background: #16402a; color: #7fe0a4; }
 .estado.inactivo, .error { background: #4a2020; color: #f0a0a0; }
+.error-duplicado { border: 2px solid currentColor; border-left-width: 6px; }
